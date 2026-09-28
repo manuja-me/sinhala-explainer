@@ -3,23 +3,25 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Antigravity Skill](https://img.shields.io/badge/Antigravity-Skill-blue.svg)](https://github.com/manuja-me/sinhala-explainer)
 
-An intelligent, active pedagogical skill for Google Antigravity and AI coding agents. It explains complex programming, computer science, technical documentation, and study materials in natural, conversational **spoken Sinhala** (කතා කරන සරල සිංහල) while preserving English technical terms and leveraging visual diagrams.
+An intelligent, active pedagogical skill for Google Antigravity and AI coding agents. It explains complex programming, computer science, technical documentation, and study materials in natural, conversational **spoken Sinhala** (කතා කරන සරල සිංහල) while keeping technical English terms intact and making concepts click with visuals and analogies.
 
 ---
 
 ## 🌟 Key Features
 
-1. **Natural Spoken Sinhala (කතා කරන බස)**: Explains concepts cleanly without stiff, artificial book Sinhala.
-2. **Technical English Term Preservation**: Avoids confusing translations (e.g. keeps `Function`, `Variable`, `Database`, `API`, `Thread`, `Cache`).
-3. **Upfront Glossary**: Clarifies uncommon or advanced English words upfront with short, plain definitions.
-4. **Multi-Modal Content Intake (Dual Mode)**:
-   - **Web URLs**: Browses and digests articles or docs via `read_url_content`.
-   - **Files & PDFs**: Reads and explains local PDFs, Markdown docs, and code files.
-   - **Images & Diagrams**: Interprets screenshots, architecture graphs, and slides.
-   - **Direct Prompts**: Accepts inline text or topics directly.
-5. **Visual Scaffolding**: Automatically generates Mermaid flowcharts, sequence diagrams, and markdown tables.
-6. **Real-Life Analogies**: Grounds complex concepts in relatable everyday scenarios (e.g. Sri Lankan tea stalls, buses, supermarkets).
-7. **Interactive Check-ins**: Concludes with a brief comprehension question or challenge.
+1. **Natural Spoken Sinhala (කතා කරන බස)**: Friendly older-sibling tone addressing the user as **"ඔයා"** without stiff textbook grammar or Singlish.
+2. **Technical English Term Preservation**: Standard English technical words (`Variable`, `API`, `Thread`, `Cache`, `Async/Await`) stay in English.
+3. **Upfront Glossary ("දැනගන්න ඕන වචන")**: Clarifies uncommon English words before diving into the explanation.
+4. **Session Persistence**: Stays active across follow-up turns until explicitly deactivated with commands like `"stop"`, `"normal mode"`, or `"exit"`.
+5. **Multi-Modal Intake with Fallbacks**:
+   - **Web URLs**: Browses and reads web pages with automatic fallback tips if access is blocked.
+   - **PDFs / Documents**: Reads local files or requests direct text copy when needed.
+   - **Images & Diagrams**: Interprets screenshots and architecture graphs.
+   - **Inline Text / Topics**: Directly explains raw text or provides a disclaimer for topic-only prompts.
+6. **Robust Visual Scaffolding**: Uses Mermaid diagrams with **English node labels** (for universal rendering reliability) followed by a **Sinhala caption**.
+7. **Clean Code Walkthroughs**: English code blocks that copy-paste and run cleanly, followed by numbered Sinhala line walkthroughs and expected output blocks.
+8. **Real-Life Analogies**: Grounds abstract concepts in everyday Sri Lankan scenarios (tea stalls, buses, supermarkets).
+9. **Interactive Check-in Challenges**: Concludes with an engaging comprehension question or thought puzzle.
 
 ---
 
@@ -41,6 +43,14 @@ Trigger the skill manually in Antigravity chat:
 /sinhala-explainer
 ```
 
+### Exit Commands
+To return to standard agent behavior at any time:
+- `"stop"`
+- `"normal mode"`
+- `"exit"`
+- `"English එකෙන් කියන්න"`
+- `"සාමාන්ය විදියට කියන්න"`
+
 ---
 
 ## 📂 Project Structure
@@ -58,14 +68,13 @@ sinhala-explainer/
 
 ## 🛠️ Installation in Antigravity
 
-Clone or copy this folder into your global Antigravity skills directory:
+Copy or clone this directory into your global Antigravity skills location:
 
 ```powershell
-# Copy to global Antigravity skills directory
 Copy-Item -Recurse -Path ".\sinhala-explainer" -Destination "$HOME\.gemini\config\skills\sinhala-explainer"
 ```
 
-Once installed, `/sinhala-explainer` is immediately available in any Antigravity conversation.
+Once copied, `/sinhala-explainer` is immediately available in any Antigravity conversation.
 
 ---
 

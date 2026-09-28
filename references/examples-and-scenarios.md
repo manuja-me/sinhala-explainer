@@ -4,53 +4,77 @@ This reference provides concrete demonstrations of the pedagogical patterns used
 
 ---
 
-## Example 1: Explaining an Asynchronous JavaScript Concept (Event Loop & Promises)
+## Example 1: Full Explanation with Code & Analogy (Event Loop)
 
-### 1. 🎯 Quick Snapshot
-JavaScript එක Single-Threaded වුණත් කොහොමද එක වෙලාවට වැඩ කීපයක් non-blocking විදිහට කරන්නේ කියන එක පාලනය කරන්නේ **Event Loop** එකෙන්.
+### 1. Goal
+> "මේකෙන් අපි ඉගෙන ගන්නේ JavaScript Single-Threaded භාෂාවක් වෙලත් background tasks හිර නොවී එක දිගට වැඩ කරන්නේ කොහොමද කියන එක (Event Loop)."
 
-### 2. 🔑 Technical Term Glossary
-- **`Single-Threaded`**: (එක පාරකට එක task එකක් විතරක් execute කරන්න පුළුවන් CPU thread එකක් තිබීම)
-- **`Call Stack`**: (දැනට run වෙන functions පිළිවෙළට තියාගන්න stack structure එක)
-- **`Callback Queue`**: (Background tasks ඉවර වුණාම Stack එක නිදහස් වෙනකල් පෝලිමේ ඉන්න තැන)
-- **`Non-blocking I/O`**: (Database request හෝ Network call එකක් ඉවර වෙනකල් මුළු program එකම freeze නොවී ඉතුරු වැඩ කරගෙන යෑමේ හැකියාව)
+### 2. දැනගන්න ඕන වචන
+- **`Single-Threaded`**: එක පාරකට එක CPU task එකක් විතරක් execute කරන්න පුළුවන් architecture එකක්.
+- **`Call Stack`**: දැනට run වෙන functions පිළිවෙළට තියාගන්න memory stack එක.
+- **`Callback Queue`**: Background වැඩ ඉවර වුණාම Stack එක නිදහස් වෙනකල් පෝලිමේ ඉන්න තැන.
+- **`Non-blocking`**: Database query හෝ network call එකක් ඉවර වෙනකල් මුළු application එකම freeze නොවී ඉතුරු වැඩ කරගෙන යෑමේ හැකියාව.
 
-### 3. 💡 Everyday Analogy (තේ කඩේ උපමාව)
-හිතන්න ඔයා තේ කඩේකට ගිහින් Plain Tea එකකුයි Egg Roti එකකුයි order කරනවා.
+### 3. සරල උපමාවකින් තේරුම් ගමු (තේ කඩේ උපමාව)
+හිතන්න ඔයා තේ කඩේකට ගිහින් Plain Tea එකකුයි Egg Roti එකකුයි order කරනවා:
 - Cashier (Call Stack) ඔයාගේ order එක ලියාගෙන kitchen එකට දෙනවා.
-- Roti එක හදනකල් cashier ඔයාව එතන නවත්තන් ඉන්නේ නෑ (Non-blocking). ඊළඟ customer ගෙන් order එක ගන්නවා.
+- Roti එක හදනකල් cashier ඔයාව එතන නවත්තන් ඉන්නේ නැහැ (Non-blocking). ඊළඟ customer ගෙන් order එක ගන්නවා.
 - Roti එක හැදුණු ගමන් බෙල් එක ගහලා (Callback Queue එකට දාලා) ඔයාට කෑම එක දෙනවා.
-මෙන්න මේ cashier සහ kitchen අතර වැඩ ටික එක දිගට balance කරන්නේ **Event Loop** එක වගේ!
+මෙන්න මේ cashier සහ kitchen අතර වැඩ balance කරන්නේ **Event Loop** එක වගේ!
 
-### 4. 📊 Visual Representation
+### 4. How It Works (වැඩ කරන විදිහ සරලව)
 ```mermaid
 flowchart TD
-    A["JavaScript Code"] --> B["Call Stack (දැනට execute වෙන වැඩ)"]
-    B -->|Async Web API call| C["Background Worker (Timer/Fetch)"]
-    C -->|Task Done| D["Callback Queue (පෝලිම)"]
-    D -->|Stack එක Empty වුණාම| B
+    A["JavaScript Code"] --> B["Call Stack (Active Execution)"]
+    B -->|Async Web API Call| C["Background Worker (Timer / Fetch)"]
+    C -->|Task Done| D["Callback Queue (Waiting Line)"]
+    D -->|When Stack is Empty| B
 ```
+> **Diagram එක බලන විදිහ:** JavaScript code එක මුලින්ම Call Stack එකේ run වෙනවා. Async වැඩක් ආවම Background එකට යවලා Call Stack එක නිදහස් කරනවා. වැඩේ ඉවර වුණාම Callback Queue එක හරහා නැවත Stack එකට එනවා.
 
-### 5. 💻 Practical Code Snippet
+### 5. හොඳ උදාහරණයක් (Code Walkthrough)
+
 ```javascript
-console.log("1. තේ එක Order කළා"); // Call Stack එකට ගිහින් කෙලින්ම run වෙනවා
+console.log("1. Plain Tea Ordered");
 
-// Background Task එකක් (Async operation)
 setTimeout(() => {
-    console.log("2. Egg Roti එක ලෑස්තියි!"); // Callback Queue එක හරහා Stack එක හිස් වුණාම run වෙනවා
+    console.log("2. Egg Roti Ready!");
 }, 2000);
 
-console.log("3. ඊළඟ customer ගේ order එක ගන්නවා"); // මුලින්ම run වෙනවා (Non-blocking)
+console.log("3. Next Customer Served");
 ```
+
+**Code එක වැඩ කරන විදිහ:**
+1. පළවෙනි line එකෙන් synchronous විදිහට direct console output එක දෙනවා.
+2. දෙවෙනි line එකෙන් `setTimeout` background timer එකට pass කරනවා. Browser එක තත්පර 2ක් background එකේ ගණන් කරනවා.
+3. තුන්වෙනි line එක කිසිම delay එකක් නැතුව run වෙනවා.
+
+**Output එක මෙහෙමයි:**
+```text
+1. Plain Tea Ordered
+3. Next Customer Served
+2. Egg Roti Ready!
+```
+
+### 6. කෙටියෙන් මතක තියාගන්න (Recap)
+- JavaScript වල තියෙන්නේ එක Call Stack එකයි (Single-Threaded).
+- බර වැඩ (Timers, Network requests) background workers ලට භාර දෙනවා (Non-blocking).
+- Event Loop එකෙන් කරන්නේ Call Stack එක හිස් වෙනකල් බලන් ඉඳලා Queue එකේ තියෙන වැඩ Stack එකට දාන එකයි.
+
+### 7. Interactive Check-in Challenge
+දැන් ඔයාට පොඩි challenge එකක්: උඩ code එකේ `setTimeout` එකට `0` (Zero milliseconds) දැම්මොත්, `3. Next Customer Served` ට කලින් `2. Egg Roti Ready!` print වෙයිද? ඔයා මොකද හිතන්නේ?
 
 ---
 
-## Example 2: Handling Web URLs & Documentation
+## Example 2: Prerequisite Background Example
 
-When the user feeds a URL:
-1. Agent calls `read_url_content` to fetch the markdown/text.
-2. Identifies key technical architectural points.
-3. Maps unfamiliar jargon to the Glossary section.
-4. Breaks down the architecture into a spoken Sinhala step-by-step walkthrough.
-5. Produces a Mermaid diagram mapping the flow.
-6. Asks 1 interactive check-in question.
+When prerequisite context is missing from the source material:
+> *(මේක source එකේ නැහැ, ඒත් දැනගන්න ඕන)* HTTP කියන්නේ web browser එකයි server එකයි කතා කරන standard protocol එක. Headers කියන්නේ ඒ message එකත් එක්ක යන metadata (විස්තර).
+
+---
+
+## Example 3: Topic-Only (No Source) Example
+
+When user passes only `/sinhala-explainer Docker containers`:
+> "මේක මගේ දැනුම අනුව පැහැදිලි කරන්නේ, source එකක් දුන්නොත් ඒකෙන්ම කියන්නම්."
+*(Continues with full 8-part structure)*
