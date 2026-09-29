@@ -134,28 +134,62 @@ Invoke the skill directly in your AI coding agent chat:
 
 ---
 
-## 💻 Installation
+## 💻 Installation & Setup
 
-### Method A: Global Installation (Recommended)
-Install globally across all projects on your machine:
+You can install this skill across different AI coding environments (**Google Antigravity**, **Claude Code**, **Codex / Agentic IDEs**), or use it per repository.
 
+### 1. 🪐 Google Antigravity (AGY)
+
+#### Global Installation (Available across all projects):
 ```powershell
-# Windows PowerShell (into your skills directory)
-git clone https://github.com/manuja-me/sinhala-explainer.git
+# Windows PowerShell
+git clone https://github.com/manuja-me/sinhala-explainer.git "$HOME\.gemini\config\skills\sinhala-explainer"
 ```
 
 ```bash
 # macOS / Linux
-git clone https://github.com/manuja-me/sinhala-explainer.git
+git clone https://github.com/manuja-me/sinhala-explainer.git ~/.gemini/config/skills/sinhala-explainer
 ```
 
-### Method B: Workspace Installation
-Add the skill to a specific repository or team workspace:
+#### Workspace Installation (This project only):
+```bash
+# Inside your project root directory
+git clone https://github.com/manuja-me/sinhala-explainer.git .gemini/skills/sinhala-explainer
+```
+
+---
+
+### 2. 🤖 Claude Code (`claude` CLI)
+
+#### Global Installation:
+```powershell
+# Windows PowerShell
+git clone https://github.com/manuja-me/sinhala-explainer.git "$HOME\.claude\skills\sinhala-explainer"
+```
 
 ```bash
+# macOS / Linux / WSL
+git clone https://github.com/manuja-me/sinhala-explainer.git ~/.claude/skills/sinhala-explainer
+```
+
+#### Workspace Installation:
+```bash
 # Inside your project root
+git clone https://github.com/manuja-me/sinhala-explainer.git .claude/skills/sinhala-explainer
+```
+
+---
+
+### 3. ⚡ Codex / Cursor / Windsurf / Other Agent Harnesses
+
+For tools supporting the standard `.agents/skills` repository conventions:
+
+```bash
+# Universal workspace skills directory
 git clone https://github.com/manuja-me/sinhala-explainer.git .agents/skills/sinhala-explainer
 ```
+
+> **Tip for Rules / System Prompts:** If your tool uses rule files (such as `.cursorrules`, `AGENTS.md`, `CLAUDE.md`, or Codex prompts), you can also directly embed the instructions from the [Standalone Prompt](#-using-as-a-standalone-prompt-chatgpt--claude--gemini) section below.
 
 ---
 
