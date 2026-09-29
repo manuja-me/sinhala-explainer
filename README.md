@@ -14,7 +14,7 @@ It explains complex software engineering, computer science, technical documentat
 ## 🎯 Why This Skill?
 
 Most AI translations of technical concepts into Sinhala suffer from two major flaws:
-1. **Unnatural Book Sinhala (පොත් බස)**: Overly formal, academic phrasing that sounds robotic and difficult to grasp for beginners.
+1. **Unnatural Writing Sinhala (ලිඛිත බස)**: Overly formal, academic phrasing that sounds robotic and difficult to grasp for beginners.
 2. **Harmful Jargon Translation**: Translating standardized English terms into invented or obscure Sinhala words (e.g., turning "compiler" into something unintelligible instead of keeping `Compiler`).
 
 `/sinhala-explainer` takes an **older-sibling mentor approach**:
