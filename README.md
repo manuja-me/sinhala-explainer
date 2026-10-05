@@ -9,6 +9,12 @@ An intelligent, active pedagogical teacher skill built for **Google Antigravity*
 
 It explains complex software engineering, computer science, technical documentation, study materials, and general knowledge in natural, warm **spoken Sinhala (Sinhala script)**. It avoids awkward literal translations, preserves industry-standard English technical vocabulary, and anchors learning with real-world analogies and visual diagrams.
 
+| Command | Use when |
+| :--- | :--- |
+| `/sinhala-explainer` | Full lesson: glossary, analogy, diagram, code walkthrough, recap, quiz. May use general knowledge. |
+| `/sinhala-explainer-short` | You just need the gist — very short, no filler. |
+| `/sinhala-explainer-only-from-content` | Academic study: explains **only** your lecture notes / slides / PDF. No web search, no outside facts. |
+
 ---
 
 ## 🎯 Why This Skill?
@@ -85,6 +91,18 @@ Invoke the skill directly in your AI coding agent chat:
 ```
 *Prompts warmly in spoken Sinhala for what topic, link, or file you want to learn today.*
 
+### 6. Short Mode — `/sinhala-explainer-short`
+```bash
+/sinhala-explainer-short What is a JWT?
+```
+*One core sentence + 3–5 bullets (≈150 words max). No glossary, recap, or quiz. Same voice and English-term rules.*
+
+### 7. Source-Only Mode — `/sinhala-explainer-only-from-content`
+```bash
+/sinhala-explainer-only-from-content ./lecture-05-operating-systems.pdf
+```
+*Explains **only** what the given notes/slides/text say — no web search, no outside facts. Keeps the source's exact definitions (exam-safe) and cites slide/page. Questions outside the content get "ඔයා දුන්න content එකේ මේ ගැන නැහැ." Requires a source; topic-only invocations are refused.*
+
 ---
 
 ## 🔄 Session Persistence & Exit Controls
@@ -136,58 +154,36 @@ Invoke the skill directly in your AI coding agent chat:
 
 ## 💻 Installation & Setup
 
-You can install this skill across different AI coding environments (**Google Antigravity**, **Claude Code**, **Codex / Agentic IDEs**), or use it per repository.
+This repo ships **3 skills** under `skills/` (one folder per command). Clone the repo once, then copy the skill folders into your harness's skills directory. Copy only the folders you want to install a subset.
 
-### 1. 🪐 Google Antigravity (AGY)
+> **Upgrading from the old single-skill install?** Delete the old `skills/sinhala-explainer` folder first, then follow the steps below.
 
-#### Global Installation (Available across all projects):
+**Step 1 — Clone:**
+```bash
+git clone https://github.com/manuja-me/sinhala-explainer.git
+```
+
+**Step 2 — Copy skills into your harness (pick one target):**
+
+| Harness | Global (all projects) | Workspace (this project) |
+| :--- | :--- | :--- |
+| 🪐 Google Antigravity | `~/.gemini/config/skills/` | `.gemini/skills/` |
+| 🤖 Claude Code | `~/.claude/skills/` | `.claude/skills/` |
+| ⚡ Codex / Cursor / Windsurf / others | — | `.agents/skills/` |
+
+```bash
+# macOS / Linux / WSL  (example: Antigravity global)
+mkdir -p ~/.gemini/config/skills
+cp -r sinhala-explainer/skills/* ~/.gemini/config/skills/
+```
+
 ```powershell
-# Windows PowerShell
-git clone https://github.com/manuja-me/sinhala-explainer.git "$HOME\.gemini\config\skills\sinhala-explainer"
+# Windows PowerShell  (example: Claude Code global)
+New-Item -ItemType Directory -Force "$HOME\.claude\skills" | Out-Null
+Copy-Item -Recurse -Force sinhala-explainer\skills\* "$HOME\.claude\skills\"
 ```
 
-```bash
-# macOS / Linux
-git clone https://github.com/manuja-me/sinhala-explainer.git ~/.gemini/config/skills/sinhala-explainer
-```
-
-#### Workspace Installation (This project only):
-```bash
-# Inside your project root directory
-git clone https://github.com/manuja-me/sinhala-explainer.git .gemini/skills/sinhala-explainer
-```
-
----
-
-### 2. 🤖 Claude Code (`claude` CLI)
-
-#### Global Installation:
-```powershell
-# Windows PowerShell
-git clone https://github.com/manuja-me/sinhala-explainer.git "$HOME\.claude\skills\sinhala-explainer"
-```
-
-```bash
-# macOS / Linux / WSL
-git clone https://github.com/manuja-me/sinhala-explainer.git ~/.claude/skills/sinhala-explainer
-```
-
-#### Workspace Installation:
-```bash
-# Inside your project root
-git clone https://github.com/manuja-me/sinhala-explainer.git .claude/skills/sinhala-explainer
-```
-
----
-
-### 3. ⚡ Codex / Cursor / Windsurf / Other Agent Harnesses
-
-For tools supporting the standard `.agents/skills` repository conventions:
-
-```bash
-# Universal workspace skills directory
-git clone https://github.com/manuja-me/sinhala-explainer.git .agents/skills/sinhala-explainer
-```
+Restart your agent; `/sinhala-explainer`, `/sinhala-explainer-short`, and `/sinhala-explainer-only-from-content` should appear.
 
 > **Tip for Rules / System Prompts:** If your tool uses rule files (such as `.cursorrules`, `AGENTS.md`, `CLAUDE.md`, or Codex prompts), you can also directly embed the instructions from the [Standalone Prompt](#-using-as-a-standalone-prompt-chatgpt--claude--gemini) section below.
 
@@ -223,6 +219,8 @@ Now, explain this topic / text to me:
 #### How to use it:
 - **One-off Chats:** Copy the prompt above, replace the placeholder at the end with your topic (e.g. *"Explain Docker containers"*), and send it.
 - **Custom Instructions / System Prompts:** Paste the rules into ChatGPT's *Custom Instructions* ("How would you like ChatGPT to respond?") or Claude's *Project System Prompt* to always receive explanations in this style automatically without re-prompting.
+- **Short variant:** Replace rule 3 with: *"Answer in one core sentence + 3–5 bullets, max ~150 words. No glossary, recap, or closing question."*
+- **Source-only variant:** Add rule: *"Explain ONLY from the text I provide. Do not use outside knowledge or search the web. Keep the source's exact definitions. If something isn't in the text, say 'ඔයා දුන්න content එකේ මේ ගැන නැහැ.'"*
 
 ---
 

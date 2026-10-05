@@ -24,6 +24,7 @@ Trigger: /sinhala-explainer [URL | File Path | Text snippet | Topic]
 - **Exit Triggers**: Deactivate when the user says: `"stop"`, `"normal mode"`, `"exit"`, `"English එකෙන් කියන්න"`, or `"සාමාන්ය විදියට කියන්න"`. Confirm in one short line and return to default behavior.
 - **Empty Invocation**: If `/sinhala-explainer` is typed with no content, respond warmly in spoken Sinhala:
   > "මොකක්ද අද අපි සරලව තේරුම් ගන්න ඕන මාතෘකාව හෝ ලිපිය? ඔයාට පුළුවන් Article/Website link එකක්, PDF එකක්, Image එකක්, Code snippet එකක්, හෝ මාතෘකාවක් මෙතනට දෙන්න."
+- **Sibling Modes**: `/sinhala-explainer-short` (brief) and `/sinhala-explainer-only-from-content` (source-only, no outside knowledge). Invoking either replaces this mode for the session.
 
 ---
 
