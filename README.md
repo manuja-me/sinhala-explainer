@@ -135,14 +135,19 @@ Invoke the skill directly in your AI coding agent chat:
 
 ---
 
-## 💡 Worked Demonstration
+## 💡 Worked Demonstrations
 
-### Input Prompt
+Here is how each of the 3 commands responds to different learning needs:
+
+### 1. Standard Mode (`/sinhala-explainer`)
+*Full pedagogical deep dive with glossary, analogy, diagram, and check-in question.*
+
+**Prompt:**
 ```bash
 /sinhala-explainer What is an API?
 ```
 
-### Response Flow
+**Response:**
 > **Goal:** මේකෙන් අපි ඉගෙන ගන්නේ Software Programs දෙකක් එකිනෙකා එක්ක කතා කරගන්නේ කොහොමද කියන එක (API).
 >
 > **දැනගන්න ඕන වචන:**
@@ -166,6 +171,56 @@ Invoke the skill directly in your AI coding agent chat:
 >
 > **Interactive Check-in:**
 > ඔයා Uber app එකෙන් ride එකක් දාද්දී Google Maps පේන්නේ Uber එක ඇතුළෙමනේ. එතනදී Uber එක Google Maps වල API එකක් පාවිච්චි කරනවා කියන එක දැන් ඔයාට තේරෙනවද?
+
+---
+
+### 2. Short Mode (`/sinhala-explainer-short`)
+*Direct, high-signal summary under 150 words with zero filler.*
+
+**Prompt:**
+```bash
+/sinhala-explainer-short What is JWT?
+```
+
+**Response:**
+> සරලවම කිව්වොත්, **JWT (JSON Web Token)** කියන්නේ User කෙනෙක් Login වුණාට පස්සේ එයා කවුද කියලා Verify කරගන්න පාවිච්චි කරන ආරක්ෂිත digital pass එකක්.
+>
+> - **Compact & Stateless:** Server එකේ session store කරන්න ඕන නැහැ, Token එක ඇතුළෙම User claims තියෙනවා.
+> - **3 Parts:** Header, Payload, සහ Signature එකතු වෙලා `.` වලින් වෙන් වෙලා හැදෙන්නේ.
+> - **Tamper-proof:** Secret key එකකින් sign කරලා තියෙන නිසා token එකේ data වෙනස් කරොත් server එකට අහුවෙනවා.
+> - **Use-case:** Client (Frontend) එක request වල `Authorization: Bearer <token>` header එකෙන් යවනවා.
+
+---
+
+### 3. Source-Only Academic Mode (`/sinhala-explainer-only-from-content`)
+*Strictly sticks to user-provided lecture notes/slides. No outside facts or internet search.*
+
+**Prompt:**
+```bash
+/sinhala-explainer-only-from-content ./lecture-03-virtual-memory.pdf
+```
+
+**Response:**
+> **Goal:** මේ lecture notes (Lecture 03) වලින් අපි ඉගෙන ගන්නේ OS එක Memory Management කරන්නේ කොහොමද කියන එක.
+>
+> **දැනගන්න ඕන වචන (Notes වල සඳහන් විදියට):**
+> - **`Paging`** (Slide 4): Physical memory එක fixed-size frames වලටත්, logical memory එක same size pages වලටත් බෙදන technique එක.
+> - **`Page Fault`** (Slide 9): Program එක access කරන්න හදන page එක main memory (RAM) එකේ නැති වුණාම CPU එකෙන් generate කරන interrupt එක.
+>
+> ### 1. Page Fault Handling Steps (Slide 10-12)
+> 1. CPU එක invalid page reference එකක් detect කරලා OS එකට trap වෙනවා.
+> 2. OS එක backing store (disk) එකෙන් අදාළ page එක locate කරනවා.
+> 3. Free frame එකක් හොයාගෙන disk එකෙන් page එක load කරනවා.
+> 4. Page table එක update කරලා instruction එක restart කරනවා.
+>
+> *(උපමාවක් විතරයි – source එකේ නැහැ)* මේක හරියට පොතක් කියවද්දී ඕන පිටුව මේස උඩ නැතුව අල්මාරියෙන් අරන් ඇවිත් මේස උඩ තියාගන්නවා වගේ වැඩක්.
+>
+> **කෙටියෙන් මතක තියාගන්න:**
+> - Page size hardware එකෙන් තීරණය වෙන්නේ (Slide 5).
+> - Page fault handling වලදී disk I/O නිසා latency එකක් එනවා (Slide 14).
+>
+> **Exam Check-in:**
+> Slide 11 අනුව, free frame එකක් memory එකේ නැති වුණොත් OS එක ඊළඟට execute කරන algorithm එක මොකක්ද?
 
 ---
 
