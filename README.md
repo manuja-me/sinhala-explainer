@@ -1,19 +1,36 @@
-# Sinhala Explainer Teacher (`/sinhala-explainer`)
+# Sinhala Explainer Skills Suite
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Antigravity Skill](https://img.shields.io/badge/Antigravity-Skill-blue.svg)](https://github.com/manuja-me/sinhala-explainer)
 [![Security Scanned](https://img.shields.io/badge/SkillSpector-0%2F100%20Safe-brightgreen.svg)](https://github.com/manuja-me/sinhala-explainer)
 [![Language: Sinhala](https://img.shields.io/badge/Language-Spoken%20Sinhala-orange.svg)](#)
 
-An intelligent, active pedagogical teacher skill built for **Google Antigravity**, **Claude Code**, and modern AI agent harnesses. 
+A suite of 3 intelligent pedagogical teacher skills built for **Google Antigravity**, **Claude Code**, and modern AI agent harnesses. 
 
-It explains complex software engineering, computer science, technical documentation, study materials, and general knowledge in natural, warm **spoken Sinhala (Sinhala script)**. It avoids awkward literal translations, preserves industry-standard English technical vocabulary, and anchors learning with real-world analogies and visual diagrams.
+They explain complex software engineering, computer science, technical documentation, study materials, and general knowledge in natural, warm **spoken Sinhala (Sinhala script)**, preserving industry-standard English technical terms.
 
-| Command | Use when |
-| :--- | :--- |
-| `/sinhala-explainer` | Full lesson: glossary, analogy, diagram, code walkthrough, recap, quiz. May use general knowledge. |
-| `/sinhala-explainer-short` | You just need the gist — very short, no filler. |
-| `/sinhala-explainer-only-from-content` | Academic study: explains **only** your lecture notes / slides / PDF. No web search, no outside facts. |
+| Command | Skill Directory | Use when |
+| :--- | :--- | :--- |
+| `/sinhala-explainer` | `skills/sinhala-explainer` | Full lesson: glossary, analogy, diagram, code walkthrough, recap, quiz. May use general knowledge. |
+| `/sinhala-explainer-short` | `skills/sinhala-explainer-short` | You just need the gist — very short, no filler. |
+| `/sinhala-explainer-only-from-content` | `skills/sinhala-explainer-only-from-content` | Academic study: explains **only** your lecture notes / slides / PDF. No web search, no outside facts. |
+
+### 📂 Repository Structure
+
+```text
+sinhala-explainer/
+├── skills/
+│   ├── sinhala-explainer/
+│   │   ├── SKILL.md                          # Full interactive teacher mode
+│   │   └── references/
+│   │       └── examples-and-scenarios.md
+│   ├── sinhala-explainer-short/
+│   │   └── SKILL.md                          # Concise gist mode (≤150 words)
+│   └── sinhala-explainer-only-from-content/
+│       └── SKILL.md                          # Strict source-only academic mode
+├── LICENSE
+└── README.md
+```
 
 ---
 
