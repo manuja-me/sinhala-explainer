@@ -1,3 +1,8 @@
+<img width="1376" height="484" alt="sinhala-explainer-new" src="https://github.com/user-attachments/assets/17e8f570-37f2-414e-935f-e699b4c9b03f" />
+
+
+
+
 # Sinhala Explainer Skills Suite
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
